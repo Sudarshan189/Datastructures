@@ -1,71 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
-sdh
+#include <iostream>
+
 struct node
 {
 	int data;
-	struct node *next;
-
+	node* next;
 };
 
-struct node *tail, *head;
+class linkedlist
+{
+	node* link;
+	node* head;
+public:
+	linkedlist() {
+		head->next = NULL;
+	}
 
-void createNode(struct node *a) {
-	// linked list creation
-a=(struct node *)malloc(sizeof(struct node));
+	void insertnodeathead(int data) {
+		link = new node;
+		link->next = head;
+		link->data = data;
+		head = link;
+		delete link;
+	}
 
-// initialization
-head = a;
-
-// tail = a;
-head->next = NULL;
-
-tail = NULL;
-// tail=a;
-}
-
-
-
-void addNodeatHead(struct node *a, int data) {   // O(1)
-	 
-		// printf("else%d", head->data);
-		struct node *temp = (struct node *)malloc(sizeof(struct node));
-		temp->data = data;
-		temp->next = head;
-		head = temp;
-		// free(temp);
+	
+	int showheaddata() {
+		return head->data;
+	}  
 	
 
-}
-
+	
+};
 
 int main() {
-	struct node *a;
-	int num, j;
-createNode(a);
-scanf("%d",&num);
+	linkedlist l;
+	l.insertnodeathead(5);
+	l.insertnodeathead(80);
 
-for(int i=0;i<num;i++) {
-    scanf("%d ", &j);
-    addNodeatHead(a, j);
-}
+	// l.traversdata();
 
-
-// printf("%d", head->data);
-// addNodeatHead(a, 7);
-// printf("%d", head->data);
-// addNodeatHead(a, 9);
-// printf("%d", head->data);
-
-if(head->data == head->next->next->data) {
-	printf("1");
-} else {
-	printf("0");
-}
-
-
-
-
-
-	return 0;
+ std::cout << l.showheaddata();
 }
