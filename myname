@@ -142,3 +142,130 @@
 </div>
 </body>
 </html>
+===================================================
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+import ch.ethz.ssh2.Connection;
+import ch.ethz.ssh2.Session;
+import ch.ethz.ssh2.StreamGobbler;
+
+public class SshClient {
+	public static void main(String[] args) throws IOException
+	{
+		String hostname = "192.168.1.18";
+		String username = "sudarshan";
+		String password = "Sodium11";
+		Connection conn = null;
+		Scanner input = new Scanner(System.in);
+		
+		while (true) {
+			int number = input.nextInt();
+			switch (number) {
+			case 1:
+			 conn= getSession(hostname, username, password);
+				break;
+			case 2:
+				executeCommand(conn,"ps -e|grep ssh");
+					break;
+			case 3:
+				closeConnection(conn);
+				break;
+					
+
+			default:
+				break;
+			}
+		}
+		
+	}
+	
+	
+	public static Connection getSession(String hostname, String username, String password) { 
+		try
+		{
+			/* Create a connection instance */
+
+			Connection conn = new Connection(hostname);
+
+			/* Now connect */
+			
+			conn.connect();
+
+			/* Authenticate.
+			 * If you get an IOException saying something like
+			 * "Authentication method password not supported by the server at this stage."
+			 * then please check the FAQ.
+			 */
+
+			boolean isAuthenticated = conn.authenticateWithPassword(username, password);
+
+			if (isAuthenticated == false)
+				throw new IOException("Authentication failed.");
+
+			/* Create a session */
+
+			// Session sess = conn.openSession();
+			return conn;
+			
+
+			
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace(System.err);
+			System.exit(2);
+		}
+		return null;
+	}
+	
+	public static void executeCommand(Connection conn, String comm) throws IOException {
+		
+		Session sess=conn.openSession();
+		
+		
+		sess.execCommand(comm);
+		//  sess.execCommand("pwd");
+
+		// System.out.println("Here is some information about the remote host:");
+
+		/* 
+		 * This basic example does not handle stderr, which is sometimes dangerous
+		 * (please read the FAQ).
+		 */
+		
+		InputStream stdout = new StreamGobbler(sess.getStdout());
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
+
+		while (true)
+		{
+			String line = br.readLine();
+			if (line == null)
+				break;
+			System.out.println(line);
+		}
+		 sess.close();
+
+		/* Show exit status, if available (otherwise "null") */
+
+		//  System.out.println("ExitCode: " + sess.getExitStatus());
+	}
+	
+	public static void closeConnection(Connection conn) {
+		/* Close this session */
+
+		
+
+		/* Close the connection */
+
+		conn.close();
+
+	}
+}
+
+
