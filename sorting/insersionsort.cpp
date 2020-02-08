@@ -4,9 +4,6 @@
 using namespace std;
 
 
-vector<int> compareTheOld(int n, vector<int> arr, int sortedPos) {
-    
-}
 
 vector<int> insertionSort(int n, vector<int> arr) {
    int sortedPos=0;
