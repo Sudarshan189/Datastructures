@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void bubbleSort(vector<int> arr, int n) {
+vector<int> bubbleSort(vector<int> arr, int n) {
     bool isSorted=false;
     int lastPosition=n-1;;
     while(!isSorted) {
@@ -17,14 +17,15 @@ void bubbleSort(vector<int> arr, int n) {
             }
         }
         lastPosition--;
-    }    
-    for(int a: arr) {
-        cout << a << " ";
-    }
+    } 
+    return arr;
 }
 
 int main() {
  vector<int> arr={5,4,7,3,2};
-  bubbleSort(arr, arr.size());
+  arr =bubbleSort(arr, arr.size());
+  for(int a: arr) {
+        cout << a << " ";
+    }
    return 0;
 }
