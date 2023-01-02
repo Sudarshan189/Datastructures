@@ -1,0 +1,213 @@
+<html>
+<head>
+
+    <style>
+        .add-revenue {
+            width: 650px;
+            background: #000000;
+            padding: 1rem;;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.50);
+            text-align: center;
+        }
+
+        .add-revenue__controls {
+            display: flex;
+            text-align: left;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+           gap: 1rem;
+        }
+
+        .add-revenue__control label {
+            display: block;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 0.50rem;
+            color: #FFFFFF;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .add-revenue__control input {
+            height: 36px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+            background: #FFFFFF;
+            border-radius: 5px;
+        }
+
+        .add-revenue__control select {
+            height: 36px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+            background: #FFFFFF;
+            border-radius: 5px;
+        }
+
+        .add-revenue__controls button {
+            width: 95px;
+            height: 36px;
+            background: #00D09C;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+
+        .show-revenue {
+            background-color: #000000;
+            padding: 1rem;
+            margin-top: 1rem;;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.50);
+            text-align: center;
+            width: 650px;
+            display: flex;
+        }
+        
+    
+        .show-revenue__filter {
+            width: inherit;
+        }
+
+        .show-revenue__filter label {
+            color: #FFFFFF;
+            display: inline;
+            float: left;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+        }
+
+        .show-revenue__filter select {
+            height: 36px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+            background: #FFFFFF;
+            border-radius: 5px;
+            float: right;
+        }
+
+
+        .display_revenue {
+            width: 650px;
+            padding: 1rem;
+            background-color: black;
+            margin-top: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px rgba(0,0,0 ,0.50);
+        }
+
+        .display_revenue__card {
+            width: auto;
+            background-color: white;
+            border-radius: 12px;
+            padding: 1rem;;
+            box-shadow: 0 1px 8px rgba(0,0,0 ,0.50);
+            display: flex;
+         
+        }
+    
+
+        .display_revenue__card__company {
+            height: 19px;
+            font-size: 16px;
+            line-height: 19px;
+            font-weight: bold;
+            display: inline;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #000000;
+        }
+    
+        .display_revenue__card__amount {
+            height: 19px;
+            font-size: 16px;
+            line-height: 19px;
+            margin-left: 1rem;
+            display: inline;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #00D09C;
+        }
+
+        .display_revenue__card button {
+            width: 69px;
+            height: 30px;
+            background: #00D09C;
+            border-radius: 5px;
+            display: inline;
+            font-weight: bold;
+            border: 0;
+            margin-left: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+    
+  <div class="add-revenue">
+    <div class="add-revenue__controls">
+        <div class="add-revenue__control">
+            <label>Financial Year</label>
+            <select style="width: 175px;">
+                <option>2022-2023</option>
+                <option>2023-2024</option>
+            </select>
+        </div>
+        <div class="add-revenue__control">
+            <label>Company</label>
+            <input style="width: 328px;" />
+        </div>
+        <div class="add-revenue__control">
+            <label>Month</label>
+            <select  style="width: 175px;">
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+
+            </select>
+        </div>
+        <div class="add-revenue__control">
+            <label>Revenue(in Cr)</label>
+            <input type="number" style="width: 175px;" min="0.01" step="0.01"/>
+        </div>
+    
+            <button>Add</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="show-revenue">
+    <div class="show-revenue__filter">
+        <label>Filter By Financial Year</label> 
+        <select style="width: 175px;">
+            <option>2022-2023</option>
+            <option>2023-2024</option>
+        </select>
+    </div>
+
+  </div>
+
+  <div class="display_revenue">
+
+    <div class="display_revenue__card">
+        <div class="display_revenue__card__company">
+            Canara Bank, Kumta
+        </div>
+        <div class="display_revenue__card__amount">
+            18653 Cr
+        </div>
+            <button>Compare</button>
+        
+    </div>
+
+  </div>
+    
+</body>
+</html>
